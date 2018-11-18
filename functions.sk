@@ -1,0 +1,19 @@
+function numToTimespan(num: number, timeType: string) :: timespan:
+	return "%{_num}% %{_timeType}%" parsed as timespan
+  
+function getBetweenFormatted(now: date, timespan: date) :: string:
+	set {_diff} to difference between {_now} and {_timespan}
+	set {_diff} to "%{_diff}%"
+	replace all "days" and "day" with "gün" in {_diff}
+	replace all "hours" and "hour" with "saat" in {_diff}
+	replace all "minutes" and "minute" with "dakika" in {_diff}
+	replace all "seconds" and "second" with "saniye" in {_diff}
+	replace all "," and "and " with "" in {_diff} 
+	return {_diff}
+  
+function getBetweenTime(fromTime: date, toTime: timespan) :: string:
+	set {_calc} to {_toTime} later
+	set {_z} to difference between {_fromTime} and now
+  set {_z} to {_z} parsed as timespan
+	remove {_z} from {_calc}
+	return getBetweenFormatted(now, {_calc})
