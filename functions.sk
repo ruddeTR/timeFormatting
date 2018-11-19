@@ -14,6 +14,6 @@ function getBetweenFormatted(now: date, timespan: date) :: string:
 function getBetweenTime(fromTime: date, toTime: timespan) :: string:
 	set {_calc} to {_toTime} later
 	set {_z} to difference between {_fromTime} and now
-  set {_z} to {_z} parsed as timespan
+	set {_z} to {_z} parsed as timespan
 	remove {_z} from {_calc}
 	return getBetweenFormatted(now, {_calc})
